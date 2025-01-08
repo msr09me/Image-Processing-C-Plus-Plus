@@ -1,0 +1,21 @@
+# Ignore build artifacts
+/build/
+*.o
+*.exe
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore temporary files
+*.log
+*.tmp
+
+# Ignore OS-specific files
+.DS_Store        # macOS
+Thumbs.db        # Windows
+
+# Ignore CMake-generated files
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
