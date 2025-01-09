@@ -96,7 +96,7 @@ int main() {
             if (histogramType == 1) {
                 grayscaleHistogram(result);
             } else if (histogramType == 2) {
-                rGBHistogram(result);
+                rgbHistogram(result);
             } else {
                 std::cerr << "Invalid option." << std::endl;
             }
