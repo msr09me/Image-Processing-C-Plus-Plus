@@ -24,7 +24,7 @@ std::string detectFileFormat(const std::string &filePath) {
 }
 
 // Read image and return buffer
-ImageReadResult readImage(const std::string &filePath, ImageMetadata &meta) {
+ImageReadResult readImage(const std::string &filePath) {
     log(INFO, "Opening file: " + filePath);
 
     // Open file
@@ -49,6 +49,7 @@ ImageReadResult readImage(const std::string &filePath, ImageMetadata &meta) {
     }
 
     // Extract metadata
+    ImageMetadata meta;
     meta.width = *reinterpret_cast<int *>(&header[18]);
     meta.height = *reinterpret_cast<int *>(&header[22]);
     meta.bitDepth = *reinterpret_cast<int *>(&header[28]);
@@ -108,14 +109,19 @@ ImageReadResult readImage(const std::string &filePath, ImageMetadata &meta) {
     }
 
     log(INFO, "Image data successfully read.");
-    return {buffer, colorTable, header};
+    return {buffer, colorTable, header, meta};
 }
 
 // Write image to file
-bool writeImage(const std::string &filePath, const ImageMetadata &meta, 
-                std::vector<uint8_t> header, const std::vector<uint8_t> &colorTable, 
-                const std::vector<uint8_t> &buffer) {
+bool writeImage(const std::string &filePath, const ImageReadResult &result) {
+
     log(INFO, "Writing image to: " + filePath);
+
+    // Use references to avoid extra memory allocation
+    const auto &buffer = result.buffer;
+    const auto &colorTable = result.colorTable;
+    const auto &header = result.header;
+    const auto &meta = result.meta;
 
     // Validate metadata
     if (!meta.isValid()) {
@@ -126,22 +132,11 @@ bool writeImage(const std::string &filePath, const ImageMetadata &meta,
     // Validate buffer size
     size_t rowSize = ((meta.width * meta.bitDepth + 31) / 32) * 4; // Padded row size
     size_t expectedSize = rowSize * meta.height;
-    if (buffer.size() != expectedSize) {
+    if (buffer->size() != expectedSize) {
         log(ERROR, "Buffer size mismatch. Expected: " + std::to_string(expectedSize) +
-                   ", Actual: " + std::to_string(buffer.size()));
+                   ", Actual: " + std::to_string(buffer->size()));
         return false;
     }
-
-    // Update header fields
-    int fileSize = HEADER_SIZE + (meta.bitDepth <= 8 ? COLOR_TABLE_SIZE : 0) +
-                   static_cast<int>(buffer.size());
-    int dataOffset = HEADER_SIZE + (meta.bitDepth <= 8 ? COLOR_TABLE_SIZE : 0);
-
-    *reinterpret_cast<int *>(&header[2]) = fileSize;
-    *reinterpret_cast<int *>(&header[10]) = dataOffset;
-    *reinterpret_cast<int *>(&header[18]) = meta.width;
-    *reinterpret_cast<int *>(&header[22]) = meta.height;
-    *reinterpret_cast<short *>(&header[28]) = static_cast<short>(meta.bitDepth);
 
     // Open the file for writing
     std::ofstream file(filePath, std::ios::binary);
@@ -172,7 +167,7 @@ bool writeImage(const std::string &filePath, const ImageMetadata &meta,
     log(INFO, "Writing pixel data...");
     for (int y = 0; y < meta.height; ++y) {
         size_t rowStart = y * meta.width * (meta.bitDepth / 8);
-        file.write(reinterpret_cast<const char *>(&buffer[rowStart]), meta.width * (meta.bitDepth / 8));
+        file.write(reinterpret_cast<const char *>(&(*buffer)[rowStart]), meta.width * (meta.bitDepth / 8));
 
         // Add padding
         int paddingBytes = rowSize - meta.width * (meta.bitDepth / 8);

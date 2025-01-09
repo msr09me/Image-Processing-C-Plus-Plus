@@ -31,6 +31,7 @@ struct ImageReadResult {
     std::optional<std::vector<uint8_t>> buffer; // Pixel data buffer
     std::vector<uint8_t> colorTable;            // Color table
     std::vector<uint8_t> header;               // BMP header
+    ImageMetadata meta;                        // Image metadata
 };
 
 // Log Levels for Debugging
@@ -42,24 +43,18 @@ enum LogLevel { INFO, WARNING, ERROR };
  * Reads an image file into a buffer.
  *
  * @param filePath Path to the input image file.
- * @param meta Reference to ImageMetadata to store extracted metadata.
- * @return A buffer containing the image pixel data, or std::nullopt on failure.
+ 
+ * @return A ImageReadResult containing the image pixel data, or std::nullopt on failure / colorTable if bitdepth < = 8 / header / meta data.
  */
-ImageReadResult readImage(const std::string &filePath, ImageMetadata &meta);
+ImageReadResult readImage(const std::string &filePath);
 
 /**
  * Writes an image to a file.
  *
  * @param filePath Path to the output image file.
- * @param meta ImageMetadata containing dimensions and bit depth.
- * @param header Pointer to the BMP header data.
- * @param colorTable Pointer to the BMP color table data (if applicable).
- * @param buffer The image pixel data to write.
- * @return True if the write was successful, false otherwise.
+ * @param result ImageReadResult
  */
-bool writeImage(const std::string &filePath, const ImageMetadata &meta, 
-                std::vector<uint8_t> header, const std::vector<uint8_t> &colorTable, 
-                const std::vector<uint8_t> &buffer) ;
+bool writeImage(const std::string &filePath, const ImageReadResult &result);
 
 /**
  * Detects the format of an image file based on its signature.

@@ -2,6 +2,7 @@
 #include <fstream>
 #include "ImageHistogram.h"
 
+
 // Function to calculate the histogram for grayscale and RGB images
 void calculateHistogram(const uint8_t *buffer, int width, int height, int bitDepth, int *histogram, int channel = -1) {
     // Initialize the histogram array
@@ -104,3 +105,40 @@ void displayHistogramAsBarChart(const int *histogram, int bitDepth) {
 }
 
 
+void grayscaleHistogram(const ImageReadResult &result) {
+    int histogram[65536] = {0};
+    calculateHistogram(result.buffer->data(), result.meta.width, result.meta.height, result.meta.bitDepth, histogram, -1);
+    displayHistogram(histogram, result.meta.bitDepth, false, 'N');
+
+    std::string outputFileName = "histogram_data.csv";
+    saveHistogramToFile(histogram, result.meta.bitDepth, outputFileName);
+
+    displayHistogramAsBarChart(histogram, result.meta.bitDepth);
+}
+
+void rGBHistogram(const ImageReadResult &result) {
+    if (result.meta.bitDepth != 24) {
+        std::cerr << "RGB histogram is only supported for 24-bit images." << std::endl;
+        return;
+    }
+
+    int redHistogram[256] = {0};
+    int greenHistogram[256] = {0};
+    int blueHistogram[256] = {0};
+
+    calculateHistogram(result.buffer->data(), result.meta.width, result.meta.height, 8, redHistogram, 0);   // Red channel
+    calculateHistogram(result.buffer->data(), result.meta.width, result.meta.height, 8, greenHistogram, 1); // Green channel
+    calculateHistogram(result.buffer->data(), result.meta.width, result.meta.height, 8, blueHistogram, 2);  // Blue channel
+
+    displayHistogram(redHistogram, 8, true, 'R');
+    displayHistogram(greenHistogram, 8, true, 'G');
+    displayHistogram(blueHistogram, 8, true, 'B');
+
+    saveHistogramToFile(redHistogram, 8, "redHistogram_data.csv");
+    saveHistogramToFile(greenHistogram, 8, "greenHistogram_data.csv");
+    saveHistogramToFile(blueHistogram, 8, "blueHistogram_data.csv");
+
+    displayHistogramAsBarChart(redHistogram, 8);
+    displayHistogramAsBarChart(greenHistogram, 8);
+    displayHistogramAsBarChart(blueHistogram, 8);
+}
