@@ -1,7 +1,9 @@
 #ifndef IMAGE_HISTOGRAM_H
 #define IMAGE_HISTOGRAM_H
 
-#include <stdint.h>
+#include <vector>
+#include <string>
+#include <cstdint>
 #include "ImageIO.h"
 
 constexpr int NUM_BINS_8BIT = 256;
@@ -16,5 +18,14 @@ void saveHistogramToFile(const std::vector<int> &histogram, const std::string &f
 void displayHistogramAsBarChart(const std::vector<int> &histogram) ;
 void grayscaleHistogram(const ImageReadResult &result) ;
 void rgbHistogram(const ImageReadResult &result);
+std::vector<uint8_t> histogramEqualization(const ImageReadResult &result);
+
+/**
+ * Performs histogram equalization on a grayscale image.
+ *
+ * @param result The image data and metadata.
+ * @return A new buffer with the equalized grayscale image.
+ */
+std::vector<uint8_t> histogramEqualization(const ImageReadResult &result);
 
 #endif

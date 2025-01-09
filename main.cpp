@@ -101,6 +101,14 @@ int main() {
                 std::cerr << "Invalid option." << std::endl;
             }
             break;
+
+        case 2:
+
+            std::cout << "Histogram Equalization\n";
+
+            result.buffer =  histogramEqualization(result);
+
+            break;
         
         default:
             break;

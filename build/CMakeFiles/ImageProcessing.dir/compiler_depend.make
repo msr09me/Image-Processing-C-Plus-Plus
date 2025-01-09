@@ -3,28 +3,12 @@
 
 CMakeFiles/ImageProcessing.dir/ImageHistogram.cpp.obj: ../ImageHistogram.cpp \
   ../ImageHistogram.h \
-  C:/MinGW/lib/gcc/x86_64-w64-mingw32/9.2.0/include/stdint.h \
-  C:/MinGW/x86_64-w64-mingw32/include/stdint.h \
-  C:/MinGW/x86_64-w64-mingw32/include/crtdefs.h \
-  C:/MinGW/x86_64-w64-mingw32/include/corecrt.h \
-  C:/MinGW/x86_64-w64-mingw32/include/_mingw.h \
-  C:/MinGW/x86_64-w64-mingw32/include/_mingw_mac.h \
-  C:/MinGW/x86_64-w64-mingw32/include/_mingw_secapi.h \
-  C:/MinGW/x86_64-w64-mingw32/include/vadefs.h \
-  C:/MinGW/x86_64-w64-mingw32/include/sdks/_mingw_directx.h \
-  C:/MinGW/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
-  C:/MinGW/lib/gcc/x86_64-w64-mingw32/9.2.0/include/stddef.h \
-  C:/MinGW/x86_64-w64-mingw32/include/stddef.h \
-  ../ImageIO.h \
-  C:/MinGW/include/c++/9.2.0/string \
+  C:/MinGW/include/c++/9.2.0/vector \
+  C:/MinGW/include/c++/9.2.0/bits/stl_algobase.h \
   C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/c++config.h \
   C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/os_defines.h \
   C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
   C:/MinGW/include/c++/9.2.0/pstl/pstl_config.h \
-  C:/MinGW/include/c++/9.2.0/bits/stringfwd.h \
-  C:/MinGW/include/c++/9.2.0/bits/memoryfwd.h \
-  C:/MinGW/include/c++/9.2.0/bits/char_traits.h \
-  C:/MinGW/include/c++/9.2.0/bits/stl_algobase.h \
   C:/MinGW/include/c++/9.2.0/bits/functexcept.h \
   C:/MinGW/include/c++/9.2.0/bits/exception_defines.h \
   C:/MinGW/include/c++/9.2.0/bits/cpp_type_traits.h \
@@ -41,6 +25,43 @@ CMakeFiles/ImageProcessing.dir/ImageHistogram.cpp.obj: ../ImageHistogram.cpp \
   C:/MinGW/include/c++/9.2.0/bits/ptr_traits.h \
   C:/MinGW/include/c++/9.2.0/debug/debug.h \
   C:/MinGW/include/c++/9.2.0/bits/predefined_ops.h \
+  C:/MinGW/include/c++/9.2.0/bits/allocator.h \
+  C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
+  C:/MinGW/include/c++/9.2.0/ext/new_allocator.h \
+  C:/MinGW/include/c++/9.2.0/new \
+  C:/MinGW/include/c++/9.2.0/exception \
+  C:/MinGW/include/c++/9.2.0/bits/exception.h \
+  C:/MinGW/include/c++/9.2.0/bits/exception_ptr.h \
+  C:/MinGW/include/c++/9.2.0/bits/cxxabi_init_exception.h \
+  C:/MinGW/lib/gcc/x86_64-w64-mingw32/9.2.0/include/stddef.h \
+  C:/MinGW/x86_64-w64-mingw32/include/stddef.h \
+  C:/MinGW/x86_64-w64-mingw32/include/crtdefs.h \
+  C:/MinGW/x86_64-w64-mingw32/include/corecrt.h \
+  C:/MinGW/x86_64-w64-mingw32/include/_mingw.h \
+  C:/MinGW/x86_64-w64-mingw32/include/_mingw_mac.h \
+  C:/MinGW/x86_64-w64-mingw32/include/_mingw_secapi.h \
+  C:/MinGW/x86_64-w64-mingw32/include/vadefs.h \
+  C:/MinGW/x86_64-w64-mingw32/include/sdks/_mingw_directx.h \
+  C:/MinGW/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
+  C:/MinGW/include/c++/9.2.0/typeinfo \
+  C:/MinGW/include/c++/9.2.0/bits/hash_bytes.h \
+  C:/MinGW/include/c++/9.2.0/bits/nested_exception.h \
+  C:/MinGW/include/c++/9.2.0/bits/memoryfwd.h \
+  C:/MinGW/include/c++/9.2.0/bits/stl_construct.h \
+  C:/MinGW/include/c++/9.2.0/ext/alloc_traits.h \
+  C:/MinGW/include/c++/9.2.0/bits/alloc_traits.h \
+  C:/MinGW/include/c++/9.2.0/bits/stl_uninitialized.h \
+  C:/MinGW/include/c++/9.2.0/utility \
+  C:/MinGW/include/c++/9.2.0/bits/stl_relops.h \
+  C:/MinGW/include/c++/9.2.0/initializer_list \
+  C:/MinGW/include/c++/9.2.0/bits/stl_vector.h \
+  C:/MinGW/include/c++/9.2.0/bits/stl_bvector.h \
+  C:/MinGW/include/c++/9.2.0/bits/functional_hash.h \
+  C:/MinGW/include/c++/9.2.0/bits/range_access.h \
+  C:/MinGW/include/c++/9.2.0/bits/vector.tcc \
+  C:/MinGW/include/c++/9.2.0/string \
+  C:/MinGW/include/c++/9.2.0/bits/stringfwd.h \
+  C:/MinGW/include/c++/9.2.0/bits/char_traits.h \
   C:/MinGW/include/c++/9.2.0/bits/postypes.h \
   C:/MinGW/include/c++/9.2.0/cwchar \
   C:/MinGW/x86_64-w64-mingw32/include/wchar.h \
@@ -50,17 +71,8 @@ CMakeFiles/ImageProcessing.dir/ImageHistogram.cpp.obj: ../ImageHistogram.cpp \
   C:/MinGW/x86_64-w64-mingw32/include/swprintf.inl \
   C:/MinGW/x86_64-w64-mingw32/include/sec_api/wchar_s.h \
   C:/MinGW/include/c++/9.2.0/cstdint \
-  C:/MinGW/include/c++/9.2.0/bits/allocator.h \
-  C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
-  C:/MinGW/include/c++/9.2.0/ext/new_allocator.h \
-  C:/MinGW/include/c++/9.2.0/new \
-  C:/MinGW/include/c++/9.2.0/exception \
-  C:/MinGW/include/c++/9.2.0/bits/exception.h \
-  C:/MinGW/include/c++/9.2.0/bits/exception_ptr.h \
-  C:/MinGW/include/c++/9.2.0/bits/cxxabi_init_exception.h \
-  C:/MinGW/include/c++/9.2.0/typeinfo \
-  C:/MinGW/include/c++/9.2.0/bits/hash_bytes.h \
-  C:/MinGW/include/c++/9.2.0/bits/nested_exception.h \
+  C:/MinGW/lib/gcc/x86_64-w64-mingw32/9.2.0/include/stdint.h \
+  C:/MinGW/x86_64-w64-mingw32/include/stdint.h \
   C:/MinGW/include/c++/9.2.0/bits/localefwd.h \
   C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/c++locale.h \
   C:/MinGW/include/c++/9.2.0/clocale \
@@ -74,8 +86,6 @@ CMakeFiles/ImageProcessing.dir/ImageHistogram.cpp.obj: ../ImageHistogram.cpp \
   C:/MinGW/include/c++/9.2.0/bits/cxxabi_forced.h \
   C:/MinGW/include/c++/9.2.0/bits/stl_function.h \
   C:/MinGW/include/c++/9.2.0/backward/binders.h \
-  C:/MinGW/include/c++/9.2.0/bits/range_access.h \
-  C:/MinGW/include/c++/9.2.0/initializer_list \
   C:/MinGW/include/c++/9.2.0/bits/basic_string.h \
   C:/MinGW/include/c++/9.2.0/ext/atomicity.h \
   C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/gthr.h \
@@ -95,11 +105,8 @@ CMakeFiles/ImageProcessing.dir/ImageHistogram.cpp.obj: ../ImageHistogram.cpp \
   C:/MinGW/x86_64-w64-mingw32/include/pthread_compat.h \
   C:/MinGW/x86_64-w64-mingw32/include/pthread_unistd.h \
   C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
-  C:/MinGW/include/c++/9.2.0/ext/alloc_traits.h \
-  C:/MinGW/include/c++/9.2.0/bits/alloc_traits.h \
   C:/MinGW/include/c++/9.2.0/string_view \
   C:/MinGW/include/c++/9.2.0/limits \
-  C:/MinGW/include/c++/9.2.0/bits/functional_hash.h \
   C:/MinGW/include/c++/9.2.0/bits/string_view.tcc \
   C:/MinGW/include/c++/9.2.0/ext/string_conversions.h \
   C:/MinGW/include/c++/9.2.0/cstdlib \
@@ -111,14 +118,7 @@ CMakeFiles/ImageProcessing.dir/ImageHistogram.cpp.obj: ../ImageHistogram.cpp \
   C:/MinGW/include/c++/9.2.0/cstdio \
   C:/MinGW/include/c++/9.2.0/cerrno \
   C:/MinGW/include/c++/9.2.0/bits/basic_string.tcc \
-  C:/MinGW/include/c++/9.2.0/vector \
-  C:/MinGW/include/c++/9.2.0/bits/stl_construct.h \
-  C:/MinGW/include/c++/9.2.0/bits/stl_uninitialized.h \
-  C:/MinGW/include/c++/9.2.0/utility \
-  C:/MinGW/include/c++/9.2.0/bits/stl_relops.h \
-  C:/MinGW/include/c++/9.2.0/bits/stl_vector.h \
-  C:/MinGW/include/c++/9.2.0/bits/stl_bvector.h \
-  C:/MinGW/include/c++/9.2.0/bits/vector.tcc \
+  ../ImageIO.h \
   C:/MinGW/include/c++/9.2.0/optional \
   C:/MinGW/include/c++/9.2.0/stdexcept \
   C:/MinGW/include/c++/9.2.0/bits/enable_special_members.h \
@@ -149,6 +149,10 @@ CMakeFiles/ImageProcessing.dir/ImageHistogram.cpp.obj: ../ImageHistogram.cpp \
   C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/basic_file.h \
   C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/c++io.h \
   C:/MinGW/include/c++/9.2.0/bits/fstream.tcc \
+  C:/MinGW/include/c++/9.2.0/numeric \
+  C:/MinGW/include/c++/9.2.0/bits/stl_numeric.h \
+  C:/MinGW/include/c++/9.2.0/pstl/glue_numeric_defs.h \
+  C:/MinGW/include/c++/9.2.0/pstl/execution_defs.h \
   C:/MinGW/include/c++/9.2.0/algorithm \
   C:/MinGW/include/c++/9.2.0/bits/stl_algo.h \
   C:/MinGW/include/c++/9.2.0/bits/algorithmfwd.h \
@@ -170,7 +174,22 @@ CMakeFiles/ImageProcessing.dir/ImageHistogram.cpp.obj: ../ImageHistogram.cpp \
   C:/MinGW/include/c++/9.2.0/bits/node_handle.h \
   C:/MinGW/include/c++/9.2.0/bits/unordered_map.h \
   C:/MinGW/include/c++/9.2.0/bits/erase_if.h \
-  C:/MinGW/include/c++/9.2.0/pstl/execution_defs.h
+  C:/MinGW/include/c++/9.2.0/math.h \
+  C:/MinGW/include/c++/9.2.0/cmath \
+  C:/MinGW/x86_64-w64-mingw32/include/math.h \
+  C:/MinGW/include/c++/9.2.0/bits/specfun.h \
+  C:/MinGW/include/c++/9.2.0/tr1/gamma.tcc \
+  C:/MinGW/include/c++/9.2.0/tr1/special_function_util.h \
+  C:/MinGW/include/c++/9.2.0/tr1/bessel_function.tcc \
+  C:/MinGW/include/c++/9.2.0/tr1/beta_function.tcc \
+  C:/MinGW/include/c++/9.2.0/tr1/ell_integral.tcc \
+  C:/MinGW/include/c++/9.2.0/tr1/exp_integral.tcc \
+  C:/MinGW/include/c++/9.2.0/tr1/hypergeometric.tcc \
+  C:/MinGW/include/c++/9.2.0/tr1/legendre_function.tcc \
+  C:/MinGW/include/c++/9.2.0/tr1/modified_bessel_func.tcc \
+  C:/MinGW/include/c++/9.2.0/tr1/poly_hermite.tcc \
+  C:/MinGW/include/c++/9.2.0/tr1/poly_laguerre.tcc \
+  C:/MinGW/include/c++/9.2.0/tr1/riemann_zeta.tcc
 
 CMakeFiles/ImageProcessing.dir/ImageIO.cpp.obj: ../ImageIO.cpp \
   ../ImageIO.h \
@@ -643,75 +662,17 @@ CMakeFiles/ImageProcessing.dir/main.cpp.obj: ../main.cpp \
   ../ImageHistogram.h
 
 
+C:/MinGW/include/c++/9.2.0/bits/hashtable.h:
+
+C:/MinGW/include/c++/9.2.0/bits/stl_algobase.h:
+
+C:/MinGW/include/c++/9.2.0/bits/invoke.h:
+
+C:/MinGW/include/c++/9.2.0/bits/range_access.h:
+
 C:/MinGW/include/c++/9.2.0/bits/memoryfwd.h:
 
 ../ImageHistogram.cpp:
-
-C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/c++locale.h:
-
-C:/MinGW/include/c++/9.2.0/bits/stl_vector.h:
-
-C:/MinGW/include/c++/9.2.0/bits/string_view.tcc:
-
-C:/MinGW/x86_64-w64-mingw32/include/pthread_unistd.h:
-
-../ImageHistogram.h:
-
-C:/MinGW/lib/gcc/x86_64-w64-mingw32/9.2.0/include/stdint.h:
-
-C:/MinGW/include/c++/9.2.0/bits/nested_exception.h:
-
-C:/MinGW/include/c++/9.2.0/new:
-
-C:/MinGW/x86_64-w64-mingw32/include/stdint.h:
-
-C:/MinGW/include/c++/9.2.0/ext/new_allocator.h:
-
-C:/MinGW/include/c++/9.2.0/bits/ptr_traits.h:
-
-C:/MinGW/include/c++/9.2.0/bits/stringfwd.h:
-
-C:/MinGW/x86_64-w64-mingw32/include/_mingw_mac.h:
-
-C:/MinGW/x86_64-w64-mingw32/include/_mingw.h:
-
-C:/MinGW/x86_64-w64-mingw32/include/crtdefs.h:
-
-C:/MinGW/x86_64-w64-mingw32/include/stddef.h:
-
-C:/MinGW/x86_64-w64-mingw32/include/corecrt.h:
-
-C:/MinGW/x86_64-w64-mingw32/include/_mingw_secapi.h:
-
-C:/MinGW/include/c++/9.2.0/clocale:
-
-C:/MinGW/x86_64-w64-mingw32/include/vadefs.h:
-
-C:/MinGW/x86_64-w64-mingw32/include/sdks/_mingw_directx.h:
-
-C:/MinGW/include/c++/9.2.0/bits/char_traits.h:
-
-C:/MinGW/include/c++/9.2.0/bits/hash_bytes.h:
-
-C:/MinGW/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h:
-
-C:/MinGW/include/c++/9.2.0/bits/unordered_map.h:
-
-C:/MinGW/include/c++/9.2.0/ext/type_traits.h:
-
-C:/MinGW/lib/gcc/x86_64-w64-mingw32/9.2.0/include/stddef.h:
-
-C:/MinGW/x86_64-w64-mingw32/include/locale.h:
-
-../ImageIO.h:
-
-C:/MinGW/include/c++/9.2.0/tr1/gamma.tcc:
-
-C:/MinGW/include/c++/9.2.0/ext/string_conversions.h:
-
-C:/MinGW/include/c++/9.2.0/string_view:
-
-C:/MinGW/include/c++/9.2.0/string:
 
 C:/MinGW/include/c++/9.2.0/bits/locale_facets.tcc:
 
@@ -719,21 +680,29 @@ C:/MinGW/include/c++/9.2.0/bits/allocator.h:
 
 C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/c++config.h:
 
-C:/MinGW/include/c++/9.2.0/bits/istream.tcc:
+C:/MinGW/include/c++/9.2.0/bits/string_view.tcc:
 
-C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/os_defines.h:
+C:/MinGW/x86_64-w64-mingw32/include/pthread_unistd.h:
 
-C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/cpu_defines.h:
+../ImageHistogram.h:
 
-C:/MinGW/x86_64-w64-mingw32/include/corecrt_wstdlib.h:
+C:/MinGW/include/c++/9.2.0/bits/stl_vector.h:
+
+C:/MinGW/include/c++/9.2.0/bits/cpp_type_traits.h:
+
+C:/MinGW/include/c++/9.2.0/tr1/special_function_util.h:
+
+C:/MinGW/include/c++/9.2.0/vector:
+
+C:/MinGW/include/c++/9.2.0/bits/stl_numeric.h:
 
 C:/MinGW/include/c++/9.2.0/pstl/pstl_config.h:
 
-C:/MinGW/include/c++/9.2.0/bits/hashtable.h:
+C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/cpu_defines.h:
 
-C:/MinGW/include/c++/9.2.0/bits/stl_algobase.h:
+C:/MinGW/include/c++/9.2.0/bits/istream.tcc:
 
-C:/MinGW/x86_64-w64-mingw32/include/sec_api/wchar_s.h:
+C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/os_defines.h:
 
 C:/MinGW/include/c++/9.2.0/bits/functexcept.h:
 
@@ -741,7 +710,11 @@ C:/MinGW/x86_64-w64-mingw32/include/sec_api/stdlib_s.h:
 
 C:/MinGW/include/c++/9.2.0/bits/exception_defines.h:
 
-C:/MinGW/include/c++/9.2.0/bits/cpp_type_traits.h:
+C:/MinGW/lib/gcc/x86_64-w64-mingw32/9.2.0/include/stddef.h:
+
+C:/MinGW/include/c++/9.2.0/bits/unordered_map.h:
+
+C:/MinGW/include/c++/9.2.0/ext/type_traits.h:
 
 C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/atomic_word.h:
 
@@ -755,9 +728,9 @@ C:/MinGW/include/c++/9.2.0/bits/predefined_ops.h:
 
 C:/MinGW/include/c++/9.2.0/bits/move.h:
 
-C:/MinGW/include/c++/9.2.0/bits/postypes.h:
-
 C:/MinGW/x86_64-w64-mingw32/include/swprintf.inl:
+
+C:/MinGW/include/c++/9.2.0/bits/postypes.h:
 
 C:/MinGW/include/c++/9.2.0/bits/streambuf.tcc:
 
@@ -779,27 +752,107 @@ C:/MinGW/include/c++/9.2.0/bits/stl_iterator_base_funcs.h:
 
 C:/MinGW/include/c++/9.2.0/debug/assertions.h:
 
+C:/MinGW/include/c++/9.2.0/bits/stringfwd.h:
+
+C:/MinGW/x86_64-w64-mingw32/include/_mingw_mac.h:
+
+C:/MinGW/include/c++/9.2.0/bits/ptr_traits.h:
+
 C:/MinGW/include/c++/9.2.0/bits/cxxabi_init_exception.h:
 
 C:/MinGW/include/c++/9.2.0/debug/debug.h:
 
+C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/c++allocator.h:
+
+C:/MinGW/include/c++/9.2.0/bits/nested_exception.h:
+
+C:/MinGW/include/c++/9.2.0/new:
+
+C:/MinGW/x86_64-w64-mingw32/include/stdint.h:
+
+C:/MinGW/include/c++/9.2.0/ext/new_allocator.h:
+
+C:/MinGW/include/c++/9.2.0/bits/exception.h:
+
+C:/MinGW/x86_64-w64-mingw32/include/corecrt.h:
+
+C:/MinGW/x86_64-w64-mingw32/include/stddef.h:
+
+C:/MinGW/include/c++/9.2.0/bits/functional_hash.h:
+
+C:/MinGW/x86_64-w64-mingw32/include/crtdefs.h:
+
+C:/MinGW/x86_64-w64-mingw32/include/_mingw.h:
+
+C:/MinGW/include/c++/9.2.0/clocale:
+
+C:/MinGW/x86_64-w64-mingw32/include/_mingw_secapi.h:
+
+C:/MinGW/x86_64-w64-mingw32/include/vadefs.h:
+
+C:/MinGW/x86_64-w64-mingw32/include/sdks/_mingw_directx.h:
+
+C:/MinGW/include/c++/9.2.0/numeric:
+
+C:/MinGW/include/c++/9.2.0/bits/hash_bytes.h:
+
+C:/MinGW/include/c++/9.2.0/bits/char_traits.h:
+
+C:/MinGW/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h:
+
+C:/MinGW/include/c++/9.2.0/bits/stl_uninitialized.h:
+
+C:/MinGW/include/c++/9.2.0/typeinfo:
+
+C:/MinGW/include/c++/9.2.0/bits/stl_construct.h:
+
+C:/MinGW/include/c++/9.2.0/bits/stl_bvector.h:
+
+C:/MinGW/include/c++/9.2.0/ext/alloc_traits.h:
+
 C:/MinGW/include/c++/9.2.0/cwchar:
+
+C:/MinGW/include/c++/9.2.0/bits/alloc_traits.h:
+
+C:/MinGW/include/c++/9.2.0/utility:
+
+C:/MinGW/x86_64-w64-mingw32/include/stdlib.h:
+
+C:/MinGW/include/c++/9.2.0/bits/stl_relops.h:
+
+C:/MinGW/include/c++/9.2.0/initializer_list:
+
+C:/MinGW/include/c++/9.2.0/pstl/glue_algorithm_defs.h:
+
+C:/MinGW/include/c++/9.2.0/bits/vector.tcc:
+
+C:/MinGW/include/c++/9.2.0/tr1/gamma.tcc:
+
+C:/MinGW/include/c++/9.2.0/ext/string_conversions.h:
+
+C:/MinGW/include/c++/9.2.0/string_view:
+
+C:/MinGW/include/c++/9.2.0/string:
 
 C:/MinGW/x86_64-w64-mingw32/include/wchar.h:
 
-C:/MinGW/include/c++/9.2.0/bits/localefwd.h:
+C:/MinGW/x86_64-w64-mingw32/include/corecrt_wstdlib.h:
 
 C:/MinGW/x86_64-w64-mingw32/include/_mingw_off_t.h:
 
 C:/MinGW/x86_64-w64-mingw32/include/_mingw_stat64.h:
 
+C:/MinGW/x86_64-w64-mingw32/include/sec_api/wchar_s.h:
+
 C:/MinGW/include/c++/9.2.0/cstdint:
 
-C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/c++allocator.h:
+C:/MinGW/lib/gcc/x86_64-w64-mingw32/9.2.0/include/stdint.h:
 
-C:/MinGW/include/c++/9.2.0/bits/exception.h:
+C:/MinGW/include/c++/9.2.0/bits/localefwd.h:
 
-C:/MinGW/include/c++/9.2.0/typeinfo:
+C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/c++locale.h:
+
+C:/MinGW/x86_64-w64-mingw32/include/locale.h:
 
 C:/MinGW/x86_64-w64-mingw32/include/stdio.h:
 
@@ -818,12 +871,6 @@ C:/MinGW/include/c++/9.2.0/bits/cxxabi_forced.h:
 C:/MinGW/include/c++/9.2.0/bits/stl_function.h:
 
 C:/MinGW/include/c++/9.2.0/backward/binders.h:
-
-C:/MinGW/include/c++/9.2.0/bits/invoke.h:
-
-C:/MinGW/include/c++/9.2.0/bits/range_access.h:
-
-C:/MinGW/include/c++/9.2.0/initializer_list:
 
 C:/MinGW/include/c++/9.2.0/ostream:
 
@@ -869,19 +916,9 @@ C:/MinGW/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h:
 
 C:/MinGW/x86_64-w64-mingw32/include/pthread_compat.h:
 
-C:/MinGW/include/c++/9.2.0/ext/alloc_traits.h:
-
-C:/MinGW/include/c++/9.2.0/bits/alloc_traits.h:
-
-C:/MinGW/include/c++/9.2.0/bits/functional_hash.h:
-
 C:/MinGW/include/c++/9.2.0/tr1/bessel_function.tcc:
 
 C:/MinGW/include/c++/9.2.0/cstdlib:
-
-C:/MinGW/include/c++/9.2.0/bits/stl_relops.h:
-
-C:/MinGW/x86_64-w64-mingw32/include/stdlib.h:
 
 C:/MinGW/include/c++/9.2.0/stdlib.h:
 
@@ -895,21 +932,7 @@ C:/MinGW/include/c++/9.2.0/cstdio:
 
 C:/MinGW/include/c++/9.2.0/bits/basic_string.tcc:
 
-C:/MinGW/include/c++/9.2.0/tr1/special_function_util.h:
-
-C:/MinGW/include/c++/9.2.0/vector:
-
-C:/MinGW/include/c++/9.2.0/bits/stl_bvector.h:
-
-C:/MinGW/include/c++/9.2.0/bits/stl_construct.h:
-
-C:/MinGW/include/c++/9.2.0/bits/stl_uninitialized.h:
-
-C:/MinGW/include/c++/9.2.0/utility:
-
-C:/MinGW/include/c++/9.2.0/pstl/glue_algorithm_defs.h:
-
-C:/MinGW/include/c++/9.2.0/bits/vector.tcc:
+../ImageIO.h:
 
 C:/MinGW/include/c++/9.2.0/optional:
 
@@ -959,6 +982,10 @@ C:/MinGW/include/c++/9.2.0/x86_64-w64-mingw32/bits/c++io.h:
 
 C:/MinGW/include/c++/9.2.0/bits/fstream.tcc:
 
+C:/MinGW/include/c++/9.2.0/pstl/glue_numeric_defs.h:
+
+C:/MinGW/include/c++/9.2.0/pstl/execution_defs.h:
+
 C:/MinGW/include/c++/9.2.0/algorithm:
 
 C:/MinGW/include/c++/9.2.0/bits/stl_algo.h:
@@ -989,19 +1016,7 @@ C:/MinGW/include/c++/9.2.0/bits/node_handle.h:
 
 C:/MinGW/include/c++/9.2.0/bits/erase_if.h:
 
-C:/MinGW/include/c++/9.2.0/pstl/execution_defs.h:
-
-../ImageIO.cpp:
-
-C:/MinGW/include/c++/9.2.0/cstring:
-
-C:/MinGW/x86_64-w64-mingw32/include/string.h:
-
-C:/MinGW/x86_64-w64-mingw32/include/sec_api/string_s.h:
-
-../IntensityTransformations.cpp:
-
-../IntensityTransformations.h:
+C:/MinGW/include/c++/9.2.0/math.h:
 
 C:/MinGW/include/c++/9.2.0/cmath:
 
@@ -1026,3 +1041,15 @@ C:/MinGW/include/c++/9.2.0/tr1/poly_hermite.tcc:
 C:/MinGW/include/c++/9.2.0/tr1/poly_laguerre.tcc:
 
 C:/MinGW/include/c++/9.2.0/tr1/riemann_zeta.tcc:
+
+../ImageIO.cpp:
+
+C:/MinGW/include/c++/9.2.0/cstring:
+
+C:/MinGW/x86_64-w64-mingw32/include/string.h:
+
+C:/MinGW/x86_64-w64-mingw32/include/sec_api/string_s.h:
+
+../IntensityTransformations.cpp:
+
+../IntensityTransformations.h:

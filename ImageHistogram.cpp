@@ -1,9 +1,9 @@
 #include "ImageHistogram.h"
 #include <iostream>
 #include <fstream>
-#include <vector>
+#include <numeric>
 #include <algorithm>
-
+#include <math.h>
 
 void calculateHistogram(const ImageReadResult &result, std::vector<int> &histogram, int channel) {
 
@@ -105,3 +105,68 @@ void rgbHistogram(const ImageReadResult &result) {
     displayHistogramAsBarChart(greenHistogram);
     displayHistogramAsBarChart(blueHistogram);
 }
+
+/// Histogram Equalization
+
+/*
+    Step 1: Calculate the histogram -> h(rk) = nk for k = 0,1,2,...,L-1
+    Step 2: Normalized histogram    -> p(rk) = h(rk) / MN
+    Step 3: Compute the cumulative distribution function (CDF) -> sk = sum(j = 0 to k) (p(rk))
+    Step 4: Compute the lookup table -> round( (cdf - cdf_min) (1 - cdf_min) ) * (L - 1)
+    Step 5: Map the original image to the equalized image
+
+*/
+
+std::vector<uint8_t> histogramEqualization(const ImageReadResult &result) {
+
+    std::cout << "Performin histogram equalization...";
+    const auto &meta = result.meta;
+    size_t totalPixels = meta.width * meta.height;
+
+    const uint8_t       *buffer = result.buffer->data();
+    std::vector<uint8_t> equalizedBuffer(totalPixels);
+
+    for (size_t i = 0; i < totalPixels; ++i) {
+        if (buffer[i] < 0 || buffer[i] > 255) {
+            throw std::runtime_error("Buffer contains invalid pixel value at index " + std::to_string(i));
+        }
+    }
+
+    // Step 1: Compute the histogram
+    int histogram[256] = {0};
+    for (size_t i = 0; i < totalPixels; ++i) {
+        histogram[buffer[i]]++;
+    }
+
+    // Step 2: Compute the normalized histogram
+    float normalizedHistogram[256] = {0.0f};
+    for (int i = 0; i < 256; ++i) {
+        normalizedHistogram[i] = static_cast<float>(histogram[i]) / totalPixels;
+    }
+
+    // Step 3: Compute the cumulative distribution function (CDF)
+    float cdf[256] = {0.0f};
+    cdf[0] = normalizedHistogram[0];
+    for (int i = 1; i < 256; ++i) {
+        cdf[i] = cdf[i - 1] + normalizedHistogram[i];
+    }
+
+    // Step 4: Compute the lookup table
+    uint8_t lookupTable[256];
+    float cdfMin = cdf[0]; // Smallest non-zero CDF value
+    for (int i = 0; i < 256; ++i) {
+        lookupTable[i] = static_cast<uint8_t>(std::round((cdf[i] - cdfMin) / (1.0f - cdfMin) * 255));
+    }
+
+    // Step 5: Map the original image to the equalized image
+
+    for (size_t i = 0; i < totalPixels; ++i) {
+        equalizedBuffer[i] = lookupTable[buffer[i]];
+    }
+
+    std::cout << "Histogram equalization completed";
+
+    return equalizedBuffer;
+}
+
+
