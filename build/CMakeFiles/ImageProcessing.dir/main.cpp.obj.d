@@ -153,4 +153,26 @@ CMakeFiles/ImageProcessing.dir/main.cpp.obj: \
  c:\mingw\include\c++\9.2.0\bits\vector.tcc \
  G:\My\ Drive\Robotics\Image\ Processing\Projects\ImageProcessingCplusplus\ImageIO.h \
  G:\My\ Drive\Robotics\Image\ Processing\Projects\ImageProcessingCplusplus\IntensityTransformations.h \
- G:\My\ Drive\Robotics\Image\ Processing\Projects\ImageProcessingCplusplus\ImageHistogram.h
+ G:\My\ Drive\Robotics\Image\ Processing\Projects\ImageProcessingCplusplus\ImageHistogram.h \
+ G:\My\ Drive\Robotics\Image\ Processing\Projects\ImageProcessingCplusplus\ImageFilter.h \
+ c:\mingw\include\c++\9.2.0\algorithm \
+ c:\mingw\include\c++\9.2.0\bits\stl_algo.h \
+ c:\mingw\include\c++\9.2.0\bits\algorithmfwd.h \
+ c:\mingw\include\c++\9.2.0\bits\stl_heap.h \
+ c:\mingw\include\c++\9.2.0\bits\stl_tempbuf.h \
+ c:\mingw\include\c++\9.2.0\bits\uniform_int_dist.h \
+ c:\mingw\include\c++\9.2.0\pstl\glue_algorithm_defs.h \
+ c:\mingw\include\c++\9.2.0\functional c:\mingw\include\c++\9.2.0\tuple \
+ c:\mingw\include\c++\9.2.0\array \
+ c:\mingw\include\c++\9.2.0\bits\uses_allocator.h \
+ c:\mingw\include\c++\9.2.0\bits\invoke.h \
+ c:\mingw\include\c++\9.2.0\bits\refwrap.h \
+ c:\mingw\include\c++\9.2.0\bits\std_function.h \
+ c:\mingw\include\c++\9.2.0\unordered_map \
+ c:\mingw\include\c++\9.2.0\ext\aligned_buffer.h \
+ c:\mingw\include\c++\9.2.0\bits\hashtable.h \
+ c:\mingw\include\c++\9.2.0\bits\hashtable_policy.h \
+ c:\mingw\include\c++\9.2.0\bits\node_handle.h \
+ c:\mingw\include\c++\9.2.0\bits\unordered_map.h \
+ c:\mingw\include\c++\9.2.0\bits\erase_if.h \
+ c:\mingw\include\c++\9.2.0\pstl\execution_defs.h

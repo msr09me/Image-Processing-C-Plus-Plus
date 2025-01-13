@@ -10,6 +10,7 @@ add_executable(ImageProcessing
     ImageIO.cpp
     IntensityTransformations.cpp
     ImageHistogram.cpp
+    ImageFilter.cpp
 )
 
 # Include directories for headers

@@ -128,6 +128,30 @@ ImageProcessing/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImageProcessing.dir\build.make CMakeFiles/ImageProcessing.dir/build
 .PHONY : ImageProcessing/fast
 
+ImageFilter.obj: ImageFilter.cpp.obj
+.PHONY : ImageFilter.obj
+
+# target to build an object file
+ImageFilter.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImageProcessing.dir\build.make CMakeFiles/ImageProcessing.dir/ImageFilter.cpp.obj
+.PHONY : ImageFilter.cpp.obj
+
+ImageFilter.i: ImageFilter.cpp.i
+.PHONY : ImageFilter.i
+
+# target to preprocess a source file
+ImageFilter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImageProcessing.dir\build.make CMakeFiles/ImageProcessing.dir/ImageFilter.cpp.i
+.PHONY : ImageFilter.cpp.i
+
+ImageFilter.s: ImageFilter.cpp.s
+.PHONY : ImageFilter.s
+
+# target to generate assembly for a file
+ImageFilter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImageProcessing.dir\build.make CMakeFiles/ImageProcessing.dir/ImageFilter.cpp.s
+.PHONY : ImageFilter.cpp.s
+
 ImageHistogram.obj: ImageHistogram.cpp.obj
 .PHONY : ImageHistogram.obj
 
@@ -233,6 +257,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... ImageProcessing
+	@echo ... ImageFilter.obj
+	@echo ... ImageFilter.i
+	@echo ... ImageFilter.s
 	@echo ... ImageHistogram.obj
 	@echo ... ImageHistogram.i
 	@echo ... ImageHistogram.s
