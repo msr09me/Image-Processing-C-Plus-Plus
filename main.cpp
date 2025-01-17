@@ -121,6 +121,7 @@ int main() {
         std::cout << "What type of spatial filtering do you want?\n"
                     << "1. Lowpass filter\n"
                     << "2. Highpass filter\n"
+                    << "3. Image sharpening\n"
                     << "Type the number: ";
 
         std::cin >> choice2;
@@ -201,16 +202,56 @@ int main() {
                 // Store the filtered buffer into the result
                 result.buffer = filteredBuffer;
             }
-            
-            
-            
             break;
+
+        case 2:
+            std::cout << "Choose the kernel - \n"
+                    << "1. Basic Laplacian\n"
+                    << "2. Full Laplacian\n"
+                    << "3. Basic Inverted Laplacian\n"
+                    << "4. Full Inverted Laplacian\n"
+                    << "Type the number: ";
+
+            int kernelChoice;
+            std::cin >> kernelChoice;
+
+            std::cout << "Applying Highpass Filter ..." << std::endl;
+
+                try {
+                    // Call the function and get the filtered buffer
+                    std::vector<uint8_t> filteredBuffer = applyHighPassFilter(result, kernelChoice);
+                    
+                    // Update the result buffer with the new filtered buffer
+                    result.buffer = filteredBuffer;
+                } catch (const std::exception& e) {
+                    std::cerr << "Error: " << e.what() << std::endl;
+                }
         
+        case 3:
+            std::cout << "Choose the kernel - \n"
+                    << "1. Basic Laplacian\n"
+                    << "2. Full Laplacian\n"
+                    << "3. Basic Inverted Laplacian\n"
+                    << "4. Full Inverted Laplacian\n"
+                    << "Type the number: ";
+
+            std::cin >> kernelChoice;
+
+            std::cout << "Applying Image Sharpening ..." << std::endl;
+
+                try {
+                    // Call the function and get the filtered buffer
+                    std::vector<uint8_t> filteredBuffer = applyImageSharpening(result, kernelChoice);
+                    
+                    // Update the result buffer with the new filtered buffer
+                    result.buffer = filteredBuffer;
+                } catch (const std::exception& e) {
+                    std::cerr << "Error: " << e.what() << std::endl;
+                }
         default:
             break;
         }
         
-
         break;
     
     default:

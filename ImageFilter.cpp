@@ -181,3 +181,112 @@ std::vector<uint8_t> applyMedianFilter(const ImageReadResult& inputImage, int ke
 
     return outputBuffer;
 }
+
+
+// High-pass filter with dynamic kernel selection -----------------------------------------------------------------
+
+std::vector<uint8_t> applyHighPassFilter(const ImageReadResult& inputImage, int kernelChoice) {
+    if (!inputImage.meta.isValid() || !inputImage.buffer.has_value()) {
+        throw std::invalid_argument("Invalid image metadata or missing buffer!");
+    }
+
+    const uint8_t* buffer = inputImage.buffer->data();
+    const ImageMetadata& meta = inputImage.meta;
+
+    int rows = meta.height;
+    int cols = meta.width;
+
+    // Define the kernels
+    int basicLaplacian[3][3] = {
+        {0,  1,  0},
+        {1, -4,  1},
+        {0,  1,  0}
+    };
+
+    int fullLaplacian[3][3] = {
+        {1,  1,  1},
+        {1, -8,  1},
+        {1,  1,  1}
+    };
+
+    int basicInvertedLaplacian[3][3] = {
+        {0,  -1,  0},
+        {-1,  4, -1},
+        {0,  -1,  0}
+    };
+
+    int fullInvertedLaplacian[3][3] = {
+        {-1, -1, -1},
+        {-1,  8, -1},
+        {-1, -1, -1}
+    };
+
+    // Select the kernel based on user choice
+    int (*selectedKernel)[3] = nullptr;
+
+    switch (kernelChoice) {
+        case 1: selectedKernel = basicLaplacian;            std::cout << "Applying Basic Laplacian"             <<std::endl; break;
+        case 2: selectedKernel = fullLaplacian;             std::cout << "Applying Full Laplacian"              <<std::endl; break;
+        case 3: selectedKernel = basicInvertedLaplacian;    std::cout << "Applying Basic Inverted Laplacian"    <<std::endl; break;
+        case 4: selectedKernel = fullInvertedLaplacian;     std::cout << "Applying Full Inverted Laplacian"     <<std::endl; break;
+        default:
+            throw std::invalid_argument("Invalid kernel choice! Type a valid number");
+    }
+
+    // Create an output buffer initialized to zero
+    std::vector<uint8_t> outputBuffer(rows * cols, 0);
+
+    // Apply the selected high-pass filter kernel
+    for (int i = 1; i < rows - 1; ++i) { // Skip the edges
+        for (int j = 1; j < cols - 1; ++j) {
+            int sum = 0;
+
+            // Convolve the selected kernel
+            for (int ki = -1; ki <= 1; ++ki) {
+                for (int kj = -1; kj <= 1; ++kj) {
+                    int x = i + ki;
+                    int y = j + kj;
+                    sum += buffer[x * cols + y] * selectedKernel[ki + 1][kj + 1];
+                }
+            }
+
+            // Clamp the output value to 0-255
+            outputBuffer[i * cols + j] = std::clamp(sum, 0, 255);
+        }
+    }
+
+    return outputBuffer;
+}
+
+// Image sharpening using highpass filter
+
+std::vector<uint8_t> applyImageSharpening(const ImageReadResult& inputImage, int kernelChoice) {
+
+    int c = 0;
+
+    c = (kernelChoice == 1 || kernelChoice == 2) ? -1 : ((kernelChoice == 3 || kernelChoice == 4) ? 1 : 0);
+
+    
+    const uint8_t* buffer = inputImage.buffer->data();
+    const ImageMetadata& meta = inputImage.meta;
+
+    int rows = meta.height;
+    int cols = meta.width;
+
+    // Create an buffer initialized to zero to store the filtered buffer
+    std::vector<uint8_t> filteredBuffer(rows * cols, 0);
+
+    // Create an buffer to store highpass filter result
+    std::vector<uint8_t> outputBuffer(rows * cols, 0);
+
+    filteredBuffer = applyHighPassFilter(inputImage, kernelChoice);
+
+    // Perform sharpening: output = input + c * filtered
+    for (int i = 0; i < rows * cols; ++i) {
+        int sharpenedValue = static_cast<int>(buffer[i]) + c * static_cast<int>(filteredBuffer[i]);
+        outputBuffer[i] = std::clamp(sharpenedValue, 0, 255);  // Clamp to valid range
+    }
+
+    return outputBuffer;
+
+}
