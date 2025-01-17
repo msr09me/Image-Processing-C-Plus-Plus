@@ -182,6 +182,58 @@ std::vector<uint8_t> applyMedianFilter(const ImageReadResult& inputImage, int ke
     return outputBuffer;
 }
 
+// Perform lowpass filter using the above lowpass filter functions based on user input -----------------------------
+
+std::vector<uint8_t> lowPassFilter(const ImageReadResult &inputImage) {
+
+    int kernelChoice;
+    std::cout << "What type of lowpass filtering do you want?\n"
+                    << "1. Box filter\n"
+                    << "2. Gaussian filter\n"
+                    << "3. Median filter\n"
+                    << "Type the number: ";
+
+    std::cin >> kernelChoice;
+    std::cout << std::endl;
+
+    int kernelSize;
+    std::cout << "Enter the size of the kernel: ";
+    std::cin >> kernelSize;
+    std::cout << std::endl;
+
+    // create a buffer to store filtered result
+    std::vector<uint8_t> filteredBuffer;
+
+    // User choices for kernel: 1. Box 2. Gaussian 3. Median
+
+    if (kernelChoice == 1)
+    {
+        std::cout << "Box filter started with kernel size " << kernelSize << " . . ." << std::endl;
+
+        filteredBuffer = applyBoxFilter(inputImage, kernelSize);
+
+    } else if (kernelChoice == 2)
+    {
+        std::cout << "Enter the sigma value: ";
+        double sigma;
+        std::cin >> sigma;
+        std::cout << std::endl;
+
+        std::cout << "Gaussian filter started with kernelsize " << kernelSize << "and sigma " << sigma << " . . ." << std::endl;
+
+        filteredBuffer = applyGaussianFilter(inputImage, kernelSize, sigma);
+
+    }else if (kernelChoice == 3)
+    {
+        std::cout << "Box filter started with kernel size " << kernelSize << " . . ." << std::endl;
+
+        filteredBuffer = applyMedianFilter(inputImage, kernelSize);
+
+    }
+
+    return filteredBuffer;
+}
+
 
 // High-pass filter with dynamic kernel selection -----------------------------------------------------------------
 
@@ -221,6 +273,12 @@ std::vector<uint8_t> applyHighPassFilter(const ImageReadResult& inputImage, int 
         {-1, -1, -1}
     };
 
+    int sobelOperator[3][3] = {
+        {-1, -2, -1},
+        {0, 0, 0},
+        {1, 2, 1}
+    };
+
     // Select the kernel based on user choice
     int (*selectedKernel)[3] = nullptr;
 
@@ -229,6 +287,7 @@ std::vector<uint8_t> applyHighPassFilter(const ImageReadResult& inputImage, int 
         case 2: selectedKernel = fullLaplacian;             std::cout << "Applying Full Laplacian"              <<std::endl; break;
         case 3: selectedKernel = basicInvertedLaplacian;    std::cout << "Applying Basic Inverted Laplacian"    <<std::endl; break;
         case 4: selectedKernel = fullInvertedLaplacian;     std::cout << "Applying Full Inverted Laplacian"     <<std::endl; break;
+        case 5: selectedKernel = sobelOperator;             std::cout << "Applying Sobel Operator"              <<std::endl; break;
         default:
             throw std::invalid_argument("Invalid kernel choice! Type a valid number");
     }
@@ -257,6 +316,7 @@ std::vector<uint8_t> applyHighPassFilter(const ImageReadResult& inputImage, int 
 
     return outputBuffer;
 }
+
 
 // Image sharpening using highpass filter
 
@@ -289,4 +349,35 @@ std::vector<uint8_t> applyImageSharpening(const ImageReadResult& inputImage, int
 
     return outputBuffer;
 
+}
+
+std::vector<uint8_t> applyUMHBF(const ImageReadResult& inputImage) {
+    /* UMHBF = Unsharp Maksing and Highboost Filtering
+     * 
+     * if k > 1; Highboost filtering
+     * if k < 1; Unsharp masking
+     * 
+     */
+
+    double k = 0.0;
+
+    std::cout << "Enter the k value: ";
+    std::cin >> k;
+    std::cout << std::endl;
+
+    int rows = inputImage.meta.height;
+    int cols = inputImage.meta.width;
+
+    std::vector<uint8_t> filteredBuffer;
+    std::vector<uint8_t> umhbfBuffer(rows * cols, 0);
+    const uint8_t* buffer = inputImage.buffer->data();
+
+    filteredBuffer = lowPassFilter(inputImage);
+
+    for (int i = 0; i < rows * cols; ++i) {
+        int maskedValue = static_cast<int>(buffer[i]) + k * static_cast<int>(filteredBuffer[i]);
+        umhbfBuffer[i] = std::clamp(maskedValue, 0, 255);  // Clamp to valid range
+    }
+
+    return umhbfBuffer;
 }

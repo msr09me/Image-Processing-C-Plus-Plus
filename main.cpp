@@ -36,7 +36,7 @@ int main() {
 
     switch (choice1)
     {
-    case 1:
+    case 1: {
         std::cout << "What type of transformation do you want to perform?\n"
                 << "1. Negative Transformation\n"
                 << "2. Log Transformation\n"
@@ -71,14 +71,15 @@ int main() {
                 return EXIT_FAILURE;
         }
         break;
-
-    case 2:
+    }
+    case 2: {
         std::cout << "What histogram option do you want?\n"
                 << "1. Histogram Calculation\n"
                 << "2. Histogram Equatiization\n"
                 << "3. Histogram Specification\n"
                 << "Type the number:";
 
+        int choice2;
         std::cin >> choice2;
 
         switch (choice2)
@@ -116,100 +117,41 @@ int main() {
             break;
         }
         break;
-
-    case 3:
+    }
+    case 3: {
         std::cout << "What type of spatial filtering do you want?\n"
                     << "1. Lowpass filter\n"
                     << "2. Highpass filter\n"
                     << "3. Image sharpening\n"
+                    << "4. Unsharp masking and Highboost filter\n"
                     << "Type the number: ";
 
+        int choice2;
         std::cin >> choice2;
+
+        std::vector<uint8_t> filteredBuffer;
 
         switch (choice2)
         {
-        case 1:
-            std::cout << "What type of lowpass filtering do you want?\n"
-                    << "1. Box filter\n"
-                    << "2. Gaussian filter\n"
-                    << "3. Median filter\n"
-                    << "Type the number: ";
+        case 1: {
+            std::cout << "Lowpass filter selected" <<std::endl;
 
-            int lowPassFilterType;
-            std::cin >> lowPassFilterType;
-
-            if (lowPassFilterType == 1)
-            {
-                std::cout << "Enter the kernel size for the Box Filter: ";
-                int kernelSize;
-                std::cin >> kernelSize;
-
-                if (kernelSize <= 0 || kernelSize % 2 == 0) {
-                    std::cerr << "Kernel size must be a positive odd number." << std::endl;
-                    break;
-                }
-
-                std::cout << "Applying Box Filter with kernel size " << kernelSize << "..." << std::endl;
-
-                try {
-                    // Call the function and get the filtered buffer
-                    std::vector<uint8_t> filteredBuffer = applyBoxFilter(result, kernelSize);
-                    
-                    // Update the result buffer with the new filtered buffer
-                    result.buffer = filteredBuffer;
+            try {
+                    filteredBuffer = lowPassFilter(result);
+                    result.buffer = filteredBuffer; // the extra filteredBuffer take extra memory but we use this for debuggin issue
                 } catch (const std::exception& e) {
                     std::cerr << "Error: " << e.what() << std::endl;
                 }
-            }else if (lowPassFilterType == 2)
-            {
-                std::cout << "Enter the kernel size for the Gaussian Filter: ";
-                int kernelSize;
-                std::cin >> kernelSize;
+            break; 
+        }
 
-                if (kernelSize <= 0 || kernelSize % 2 == 0) {
-                    std::cerr << "Kernel size must be a positive odd number." << std::endl;
-                    break;
-                }
-
-                std::cout << "Enter the value of sigma: ";
-                double sigma;
-                std::cin >> sigma;
-
-                std::cout << "Applying Gaussian Filter with kernel size " << kernelSize << " and sigma  " << sigma << "..." << std::endl;
-
-                // Using the applyGaussianFilter function
-                std::vector<uint8_t> filteredBuffer = applyGaussianFilter(result, kernelSize, sigma);
-
-                // Store the filtered buffer into the result
-                result.buffer = filteredBuffer;
-
-            }else if (lowPassFilterType == 3)
-            {
-                std::cout << "Enter the kernel size for the Median Filter: ";
-                int kernelSize;
-                std::cin >> kernelSize;
-
-                if (kernelSize <= 0 || kernelSize % 2 == 0) {
-                    std::cerr << "Kernel size must be a positive odd number." << std::endl;
-                    break;
-                }
-
-                std::cout << "Applying Median Filter with kernel size " << kernelSize << std::endl;
-
-                // Using the applyGaussianFilter function
-                std::vector<uint8_t> filteredBuffer = applyMedianFilter(result, kernelSize);
-
-                // Store the filtered buffer into the result
-                result.buffer = filteredBuffer;
-            }
-            break;
-
-        case 2:
+        case 2: {
             std::cout << "Choose the kernel - \n"
                     << "1. Basic Laplacian\n"
                     << "2. Full Laplacian\n"
                     << "3. Basic Inverted Laplacian\n"
                     << "4. Full Inverted Laplacian\n"
+                    << "5. Sobel Operator\n"
                     << "Type the number: ";
 
             int kernelChoice;
@@ -219,41 +161,58 @@ int main() {
 
                 try {
                     // Call the function and get the filtered buffer
-                    std::vector<uint8_t> filteredBuffer = applyHighPassFilter(result, kernelChoice);
+                    filteredBuffer = applyHighPassFilter(result, kernelChoice);
                     
                     // Update the result buffer with the new filtered buffer
                     result.buffer = filteredBuffer;
                 } catch (const std::exception& e) {
                     std::cerr << "Error: " << e.what() << std::endl;
                 }
+            break; 
+        }
         
-        case 3:
+        case 3: {
             std::cout << "Choose the kernel - \n"
                     << "1. Basic Laplacian\n"
                     << "2. Full Laplacian\n"
                     << "3. Basic Inverted Laplacian\n"
                     << "4. Full Inverted Laplacian\n"
+                    << "5. Sobel Operator\n"
                     << "Type the number: ";
 
+            int kernelChoice;
             std::cin >> kernelChoice;
 
             std::cout << "Applying Image Sharpening ..." << std::endl;
 
                 try {
                     // Call the function and get the filtered buffer
-                    std::vector<uint8_t> filteredBuffer = applyImageSharpening(result, kernelChoice);
+                    filteredBuffer = applyImageSharpening(result, kernelChoice);
                     
                     // Update the result buffer with the new filtered buffer
                     result.buffer = filteredBuffer;
                 } catch (const std::exception& e) {
                     std::cerr << "Error: " << e.what() << std::endl;
                 }
+            break; 
+        }
+        case 4: {
+            std::cout << "Unsharp masking and highboost filtering is selected" <<std::endl;
+
+            try {
+                    filteredBuffer = applyUMHBF(result);
+                    result.buffer = filteredBuffer; // the extra filteredBuffer take extra memory but we use this for debuggin issue
+                } catch (const std::exception& e) {
+                    std::cerr << "Error: " << e.what() << std::endl;
+                }
+            break; 
+        }
         default:
             break;
         }
         
         break;
-    
+    }
     default:
         break;
     }
