@@ -9,10 +9,11 @@
 #include "ImageHistogram.h"
 #include "ImageFilter.h"
 #include "ImageConverter.h"
+#include "ImageMorphology.h"
 
 int main() {
-    const std::string inputImage = "../TestImages/lena512.bmp";
-    const std::string outputImage = "../TestImages/lena512_output.bmp";
+    const std::string inputImage = "../TestImages/Binary_Geometric_Shapes.bmp";
+    const std::string outputImage = "../TestImages/Binary_Geometric_Shapes_output.bmp";
 
     std::cout << "Attempting to read input image from: " << inputImage << std::endl;
 
@@ -31,6 +32,7 @@ int main() {
               << "2. Histogram\n"
               << "3. Spatial Filtering\n"
               << "4. Imager Conversion\n"
+              << "5. Image Morphology\n"
               << "Type the number: ";
 
     int choice1;
@@ -243,6 +245,61 @@ int main() {
                     std::cerr << "Error: " << e.what() << std::endl;
                 }
         }
+        break;
+    }
+    case 5: {
+        std::cout << "What type of morphological operation do you want to perform?\n"
+              << "1. Erosion\n"
+              << "2. Dilation\n"
+              << "3. Opening\n"
+              << "4. Closing\n"
+              << "Type the number: ";
+
+        int morphChoice;
+        std::cin >> morphChoice;
+
+        std::cout << "Enter the size of the structuring element (kernel size) " <<std::endl;
+        std::cout << "Enter the row size: ";
+        int kernelRowSize;
+        std::cin >> kernelRowSize;
+        std::cout << "Enter the column size: ";
+        int kernelColumnSize;
+        std::cin >> kernelColumnSize;
+
+        if (kernelRowSize <= 0 || kernelRowSize % 2 == 0 || kernelColumnSize <= 0 || kernelColumnSize % 2 == 0) {
+            std::cerr << "Kernel size must be a positive odd number." << std::endl;
+            break;
+        }
+
+        std::vector<uint8_t> morphResult;
+
+        switch (morphChoice) {
+            case 1:
+                std::cout << "Applying Erosion...\n";
+                morphResult = applyErosion(result, kernelColumnSize, kernelRowSize);
+                break;
+            case 2:
+                std::cout << "Applying Dilation...\n";
+                morphResult = applyDilation(result, kernelColumnSize, kernelRowSize);
+                break;
+            case 3:
+                std::cout << "Applying Opening...\n";
+                morphResult = applyOpening(result, kernelColumnSize, kernelRowSize);
+                break;
+            case 4:
+                std::cout << "Applying Closing...\n";
+                morphResult = applyClosing(result, kernelColumnSize, kernelRowSize);
+                break;
+            default:
+                std::cerr << "Invalid choice for morphological operation." << std::endl;
+                break;
+        }
+
+        // Update the result buffer
+        if (!morphResult.empty()) {
+            result.buffer = morphResult;
+        }
+
         break;
     }
     default:

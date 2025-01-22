@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ImageProcessing.dir/ImageHistogram.cpp.obj.d"
   "CMakeFiles/ImageProcessing.dir/ImageIO.cpp.obj"
   "CMakeFiles/ImageProcessing.dir/ImageIO.cpp.obj.d"
+  "CMakeFiles/ImageProcessing.dir/ImageMorphology.cpp.obj"
+  "CMakeFiles/ImageProcessing.dir/ImageMorphology.cpp.obj.d"
   "CMakeFiles/ImageProcessing.dir/IntensityTransformations.cpp.obj"
   "CMakeFiles/ImageProcessing.dir/IntensityTransformations.cpp.obj.d"
   "CMakeFiles/ImageProcessing.dir/main.cpp.obj"

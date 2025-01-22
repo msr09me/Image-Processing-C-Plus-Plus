@@ -12,6 +12,7 @@ add_executable(ImageProcessing
     ImageHistogram.cpp
     ImageFilter.cpp
     ImageConverter.cpp
+    ImageMorphology.cpp 
 )
 
 # Include directories for headers

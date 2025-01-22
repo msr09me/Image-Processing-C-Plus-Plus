@@ -224,6 +224,30 @@ ImageIO.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImageProcessing.dir\build.make CMakeFiles/ImageProcessing.dir/ImageIO.cpp.s
 .PHONY : ImageIO.cpp.s
 
+ImageMorphology.obj: ImageMorphology.cpp.obj
+.PHONY : ImageMorphology.obj
+
+# target to build an object file
+ImageMorphology.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImageProcessing.dir\build.make CMakeFiles/ImageProcessing.dir/ImageMorphology.cpp.obj
+.PHONY : ImageMorphology.cpp.obj
+
+ImageMorphology.i: ImageMorphology.cpp.i
+.PHONY : ImageMorphology.i
+
+# target to preprocess a source file
+ImageMorphology.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImageProcessing.dir\build.make CMakeFiles/ImageProcessing.dir/ImageMorphology.cpp.i
+.PHONY : ImageMorphology.cpp.i
+
+ImageMorphology.s: ImageMorphology.cpp.s
+.PHONY : ImageMorphology.s
+
+# target to generate assembly for a file
+ImageMorphology.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImageProcessing.dir\build.make CMakeFiles/ImageProcessing.dir/ImageMorphology.cpp.s
+.PHONY : ImageMorphology.cpp.s
+
 IntensityTransformations.obj: IntensityTransformations.cpp.obj
 .PHONY : IntensityTransformations.obj
 
@@ -293,6 +317,9 @@ help:
 	@echo ... ImageIO.obj
 	@echo ... ImageIO.i
 	@echo ... ImageIO.s
+	@echo ... ImageMorphology.obj
+	@echo ... ImageMorphology.i
+	@echo ... ImageMorphology.s
 	@echo ... IntensityTransformations.obj
 	@echo ... IntensityTransformations.i
 	@echo ... IntensityTransformations.s
