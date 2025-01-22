@@ -26,6 +26,6 @@ std::vector<uint8_t> applyHighPassFilter(const ImageReadResult& inputImage, int 
 std::vector<uint8_t> applyImageSharpening(const ImageReadResult& inputImage, int kernelChoice);
 
 // Unsharp masking and highboost filtering
-std::vector<uint8_t> applyUMHBF(const ImageReadResult& inputImage);
+std::vector<uint8_t> applyUMHBF(const ImageReadResult& inputImage, double k);
 
 #endif // IMAGE_FILTERS_H

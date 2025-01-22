@@ -128,6 +128,30 @@ ImageProcessing/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImageProcessing.dir\build.make CMakeFiles/ImageProcessing.dir/build
 .PHONY : ImageProcessing/fast
 
+ImageConverter.obj: ImageConverter.cpp.obj
+.PHONY : ImageConverter.obj
+
+# target to build an object file
+ImageConverter.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImageProcessing.dir\build.make CMakeFiles/ImageProcessing.dir/ImageConverter.cpp.obj
+.PHONY : ImageConverter.cpp.obj
+
+ImageConverter.i: ImageConverter.cpp.i
+.PHONY : ImageConverter.i
+
+# target to preprocess a source file
+ImageConverter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImageProcessing.dir\build.make CMakeFiles/ImageProcessing.dir/ImageConverter.cpp.i
+.PHONY : ImageConverter.cpp.i
+
+ImageConverter.s: ImageConverter.cpp.s
+.PHONY : ImageConverter.s
+
+# target to generate assembly for a file
+ImageConverter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ImageProcessing.dir\build.make CMakeFiles/ImageProcessing.dir/ImageConverter.cpp.s
+.PHONY : ImageConverter.cpp.s
+
 ImageFilter.obj: ImageFilter.cpp.obj
 .PHONY : ImageFilter.obj
 
@@ -257,6 +281,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... ImageProcessing
+	@echo ... ImageConverter.obj
+	@echo ... ImageConverter.i
+	@echo ... ImageConverter.s
 	@echo ... ImageFilter.obj
 	@echo ... ImageFilter.i
 	@echo ... ImageFilter.s

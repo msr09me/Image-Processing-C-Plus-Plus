@@ -8,6 +8,7 @@
 #include "IntensityTransformations.h"
 #include "ImageHistogram.h"
 #include "ImageFilter.h"
+#include "ImageConverter.h"
 
 int main() {
     const std::string inputImage = "../TestImages/lena512.bmp";
@@ -29,6 +30,7 @@ int main() {
               << "1. Intensity Transformation\n"
               << "2. Histogram\n"
               << "3. Spatial Filtering\n"
+              << "4. Imager Conversion\n"
               << "Type the number: ";
 
     int choice1;
@@ -198,9 +200,14 @@ int main() {
         }
         case 4: {
             std::cout << "Unsharp masking and highboost filtering is selected" <<std::endl;
+            double k = 0.0;
+
+            std::cout << "Enter the k value: ";
+            std::cin >> k;
+            std::cout << std::endl;
 
             try {
-                    filteredBuffer = applyUMHBF(result);
+                    filteredBuffer = applyUMHBF(result, k);
                     result.buffer = filteredBuffer; // the extra filteredBuffer take extra memory but we use this for debuggin issue
                 } catch (const std::exception& e) {
                     std::cerr << "Error: " << e.what() << std::endl;
@@ -211,6 +218,31 @@ int main() {
             break;
         }
         
+        break;
+    }
+    case 4: {
+        std::cout << "What type of conversion you want to perform?\n"
+                    << "1. Grayscale to Binary\n"
+                    << "Type the number: ";
+
+        int conversionChoice;
+        std::cin >> conversionChoice;
+        std::cout << std::endl;
+
+        std::vector<uint8_t> filteredBuffer;
+
+        if (conversionChoice == 1)
+        {
+            std::cout << "Enter the threshold value:";
+            int thresholdValue;
+            std::cin >> thresholdValue;
+            try {
+                    filteredBuffer = applyGrayscaleToBinary(result, thresholdValue);
+                    result.buffer = filteredBuffer; // the extra filteredBuffer take extra memory but we use this for debugging issue
+                } catch (const std::exception& e) {
+                    std::cerr << "Error: " << e.what() << std::endl;
+                }
+        }
         break;
     }
     default:

@@ -23,5 +23,10 @@
   "directory": "G:/My Drive/Robotics/Image Processing/Projects/ImageProcessingCplusplus/build",
   "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/ImageProcessing.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\ImageProcessing.dir\\ImageFilter.cpp.obj -c \"G:\\My Drive\\Robotics\\Image Processing\\Projects\\ImageProcessingCplusplus\\ImageFilter.cpp\"",
   "file": "G:/My Drive/Robotics/Image Processing/Projects/ImageProcessingCplusplus/ImageFilter.cpp"
+},
+{
+  "directory": "G:/My Drive/Robotics/Image Processing/Projects/ImageProcessingCplusplus/build",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/ImageProcessing.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\ImageProcessing.dir\\ImageConverter.cpp.obj -c \"G:\\My Drive\\Robotics\\Image Processing\\Projects\\ImageProcessingCplusplus\\ImageConverter.cpp\"",
+  "file": "G:/My Drive/Robotics/Image Processing/Projects/ImageProcessingCplusplus/ImageConverter.cpp"
 }
 ]

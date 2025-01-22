@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ImageProcessing.dir/ImageConverter.cpp.obj"
+  "CMakeFiles/ImageProcessing.dir/ImageConverter.cpp.obj.d"
   "CMakeFiles/ImageProcessing.dir/ImageFilter.cpp.obj"
   "CMakeFiles/ImageProcessing.dir/ImageFilter.cpp.obj.d"
   "CMakeFiles/ImageProcessing.dir/ImageHistogram.cpp.obj"

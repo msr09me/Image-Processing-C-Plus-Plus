@@ -322,7 +322,7 @@ std::vector<uint8_t> applyHighPassFilter(const ImageReadResult& inputImage, int 
 
 std::vector<uint8_t> applyImageSharpening(const ImageReadResult& inputImage, int kernelChoice) {
 
-    int c = 0;
+    int c = -1;
 
     c = (kernelChoice == 1 || kernelChoice == 2) ? -1 : ((kernelChoice == 3 || kernelChoice == 4) ? 1 : 0);
 
@@ -351,20 +351,13 @@ std::vector<uint8_t> applyImageSharpening(const ImageReadResult& inputImage, int
 
 }
 
-std::vector<uint8_t> applyUMHBF(const ImageReadResult& inputImage) {
+std::vector<uint8_t> applyUMHBF(const ImageReadResult& inputImage, double k) {
     /* UMHBF = Unsharp Maksing and Highboost Filtering
      * 
      * if k > 1; Highboost filtering
      * if k < 1; Unsharp masking
      * 
      */
-
-    double k = 0.0;
-
-    std::cout << "Enter the k value: ";
-    std::cin >> k;
-    std::cout << std::endl;
-
     int rows = inputImage.meta.height;
     int cols = inputImage.meta.width;
 
