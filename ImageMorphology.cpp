@@ -1,4 +1,5 @@
 #include "ImageMorphology.h"
+#include <algorithm>>
 
 // Erosion
 std::vector<uint8_t> applyErosion(const ImageReadResult& inputImage, int kernelColumns, int kernelRows) {
@@ -82,4 +83,33 @@ std::vector<uint8_t> applyClosing(const ImageReadResult& inputImage, int kernelC
     tempImage.buffer = applyDilation(inputImage, kernelColumns, kernelRows);
 
     return applyErosion(tempImage, kernelColumns, kernelRows);
+}
+
+// Boundary extraction: Erosion followed by set difference
+std::vector<uint8_t> applyBoundaryExtraction(const ImageReadResult& inputImage, int kernelColumns, int kernelRows){
+
+    const uint8_t *buffer = inputImage.buffer->data();
+    const ImageMetadata &meta = inputImage.meta;
+
+    int rows = meta.height;
+    int cols = meta.width;
+
+    // output buffer
+    std::vector<uint8_t> boundaryImageBuffer(rows * cols, 0);
+
+    // Perform the erosion
+    std::vector<uint8_t> erodedImage = applyErosion(inputImage, kernelColumns, kernelRows);
+
+    // Perform the set difference
+    for (int i = 0; i < rows*cols; ++i)
+    {
+        // boundaryImageBuffer[i] = std::clamp(static_cast<int>(butffer[i]) - static_cast<int>(erodedImage[i]), 0, 255);
+        // cannot use the clamp though I use c++17
+
+        boundaryImageBuffer[i] = std::max(0, std::min(255, static_cast<int>(buffer[i]) - static_cast<int>(erodedImage[i])));
+
+    }
+
+    return boundaryImageBuffer;
+    
 }

@@ -12,8 +12,9 @@
 #include "ImageMorphology.h"
 
 int main() {
-    const std::string inputImage = "../TestImages/Binary_Geometric_Shapes.bmp";
-    const std::string outputImage = "../TestImages/Binary_Geometric_Shapes_output.bmp";
+    //const std::string inputImage = "../TestImages/Binary_Geometric_Shapes.bmp";
+    const std::string inputImage = "../TestImages/boundaryExtraction.bmp";
+    const std::string outputImage = "../TestImages/boundaryExtraction_output.bmp";
 
     std::cout << "Attempting to read input image from: " << inputImage << std::endl;
 
@@ -253,6 +254,7 @@ int main() {
               << "2. Dilation\n"
               << "3. Opening\n"
               << "4. Closing\n"
+              << "5. Boundary Extraction\n"
               << "Type the number: ";
 
         int morphChoice;
@@ -289,6 +291,10 @@ int main() {
             case 4:
                 std::cout << "Applying Closing...\n";
                 morphResult = applyClosing(result, kernelColumnSize, kernelRowSize);
+                break;
+            case 5:
+                std::cout << "Apllying Boundary Extraction...\n";
+                morphResult = applyBoundaryExtraction(result, kernelColumnSize, kernelRowSize);
                 break;
             default:
                 std::cerr << "Invalid choice for morphological operation." << std::endl;
