@@ -1,3 +1,0 @@
-G:/My Drive/Robotics/Image Processing/Projects/ImageProcessingCplusplus/build/CMakeFiles/ImageProcessing.dir
-G:/My Drive/Robotics/Image Processing/Projects/ImageProcessingCplusplus/build/CMakeFiles/edit_cache.dir
-G:/My Drive/Robotics/Image Processing/Projects/ImageProcessingCplusplus/build/CMakeFiles/rebuild_cache.dir
