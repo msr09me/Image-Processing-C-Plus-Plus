@@ -13,8 +13,9 @@
 
 int main() {
     //const std::string inputImage = "../TestImages/Binary_Geometric_Shapes.bmp";
-    const std::string inputImage = "../TestImages/boundaryExtraction.bmp";
-    const std::string outputImage = "../TestImages/boundaryExtraction_output.bmp";
+    //const std::string inputImage = "../TestImages/boundaryExtraction.bmp"; 
+    const std::string inputImage = "../TestImages/HoleFilling_8bit_converted.bmp";
+    const std::string outputImage = "../TestImages/HoleFilling_8bit_output.bmp";
 
     std::cout << "Attempting to read input image from: " << inputImage << std::endl;
 
@@ -255,6 +256,7 @@ int main() {
               << "3. Opening\n"
               << "4. Closing\n"
               << "5. Boundary Extraction\n"
+              << "6. Hole Filling\n"
               << "Type the number: ";
 
         int morphChoice;
@@ -295,6 +297,19 @@ int main() {
             case 5:
                 std::cout << "Apllying Boundary Extraction...\n";
                 morphResult = applyBoundaryExtraction(result, kernelColumnSize, kernelRowSize);
+                break;
+            case 6:
+                std::cout << "Enter the seed point coordinates for the hole (row and column): ";
+                int seedRow, seedCol;
+                std::cin >> seedRow >> seedCol;
+
+                if (seedRow < 0 || seedRow >= result.meta.height || seedCol < 0 || seedCol >= result.meta.width) {
+                    std::cerr << "Invalid seed point. Please provide a valid point inside the image." << std::endl;
+                    break;
+                }
+
+                std::cout << "Performing Hole Filing...\n";
+                morphResult = applyHoleFilling(result, {seedRow, seedCol}, kernelColumnSize, kernelRowSize);
                 break;
             default:
                 std::cerr << "Invalid choice for morphological operation." << std::endl;
