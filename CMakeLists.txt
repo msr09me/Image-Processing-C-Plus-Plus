@@ -13,6 +13,8 @@ add_executable(ImageProcessing
     src/ImageFilter.cpp
     src/ImageConverter.cpp
     src/ImageMorphology.cpp 
+    src/ImageEdgeDetection.cpp
+    src/ImageUtils.cpp 
 )
 
 # Include directories for headers

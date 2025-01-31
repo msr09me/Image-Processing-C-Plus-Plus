@@ -10,6 +10,8 @@
 #include "ImageFilter.h"
 #include "ImageConverter.h"
 #include "ImageMorphology.h"
+#include "ImageUtils.h"
+#include "ImageEdgeDetection.h"
 
 int main() {
     //const std::string inputImage = "../TestImages/Binary_Geometric_Shapes.bmp";
@@ -35,6 +37,7 @@ int main() {
               << "3. Spatial Filtering\n"
               << "4. Imager Conversion\n"
               << "5. Image Morphology\n"
+              << "6. Edge Detection\n"
               << "Type the number: ";
 
     int choice1;
@@ -320,6 +323,46 @@ int main() {
         if (!morphResult.empty()) {
             result.buffer = morphResult;
         }
+
+        break;
+    }
+    case 6: {
+        int kernelChoiceInt;
+        std::cout << "Select kernel:\n1. Sobel\n2. Prewitt\n3. Roberts\nChoice: ";
+        std::cin >> kernelChoiceInt;
+
+        KernelChoice kernelC = static_cast<KernelChoice>(kernelChoiceInt);
+
+        bool thresholdYesNo;
+        std::cout << "Do threshold? (0/1): ";
+        std::cin >> thresholdYesNo;
+
+        double thresholdVal = 0.0;
+        if (thresholdYesNo) {
+            std::cout << "Enter threshold value: ";
+            std::cin >> thresholdVal;
+        }
+
+        int paddingChoiceInt;
+        std::cout << "Select padding:\n0. None\n1. Zero\n2. Replicate\n3. Reflect\nChoice: ";
+        std::cin >> paddingChoiceInt;
+
+        PaddingChoice padC = static_cast<PaddingChoice>(paddingChoiceInt);      // casting the int padding choice into PaddingChoice type
+
+        // 3. Apply edge detection
+        std::vector<uint8_t> edgeBuffer = applyGradientEdgeDetection(
+            result,                  // input image
+            kernelC,                // kernel choice
+            thresholdYesNo,         // apply threshold?
+            thresholdVal,           // threshold value
+            padC                    // padding choice
+        );
+
+        // Update the result buffer
+        if (!edgeBuffer.empty()) {
+            result.buffer = edgeBuffer;
+        }
+
 
         break;
     }
