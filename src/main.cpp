@@ -327,43 +327,89 @@ int main() {
         break;
     }
     case 6: {
-        int kernelChoiceInt;
-        std::cout << "Select kernel:\n1. Sobel\n2. Prewitt\n3. Roberts\nChoice: ";
-        std::cin >> kernelChoiceInt;
 
-        KernelChoice kernelC = static_cast<KernelChoice>(kernelChoiceInt);
+        std:: cout << "Seclect edge detection method: \n1. Gradient based \n2. Laplacian \n3. Canny \nChoice:";
 
-        bool thresholdYesNo;
-        std::cout << "Do threshold? (0/1): ";
-        std::cin >> thresholdYesNo;
+        int method;
 
-        double thresholdVal = 0.0;
-        if (thresholdYesNo) {
-            std::cout << "Enter threshold value: ";
-            std::cin >> thresholdVal;
+        std::cin >> method;
+
+        if (method == 1) {
+            int kernelChoiceInt;
+            std::cout << "Select kernel:\n1. Sobel\n2. Prewitt\n3. Roberts\nChoice: ";
+            std::cin >> kernelChoiceInt;
+
+            KernelChoice kernelC = static_cast<KernelChoice>(kernelChoiceInt);
+
+            bool thresholdYesNo;
+            std::cout << "Do threshold? (0/1): ";
+            std::cin >> thresholdYesNo;
+
+            double thresholdVal = 0.0;
+            if (thresholdYesNo) {
+                std::cout << "Enter threshold value: ";
+                std::cin >> thresholdVal;
+            }
+
+            int paddingChoiceInt;
+            std::cout << "Select padding:\n0. None\n1. Zero\n2. Replicate\n3. Reflect\nChoice: ";
+            std::cin >> paddingChoiceInt;
+
+            PaddingChoice padC = static_cast<PaddingChoice>(paddingChoiceInt);      // casting the int padding choice into PaddingChoice type
+
+            // 3. Apply edge detection
+            std::vector<uint8_t> edgeBuffer = applyGradientEdgeDetection(
+                result,                  // input image
+                kernelC,                // kernel choice
+                thresholdYesNo,         // apply threshold?
+                thresholdVal,           // threshold value
+                padC                    // padding choice
+            );
+
+            // Update the result buffer
+            if (!edgeBuffer.empty()) {
+                result.buffer = edgeBuffer;
+            }
+
+        }else if (method == 2)
+        {
+            std::cout << "Applying Laplacian: \n";
+            
+        }else if (method == 3)
+        {
+            std::cout << "Performing Canny Edge Detection...\n";
+
+            int kernelSizeGaussian;
+
+            std::cout << "Enter the kernel size for Gaussian filter: ";
+            std::cin >> kernelSizeGaussian;
+
+            int sigmaGaussian;
+            std::cout << "Enter the sigma value for Gaussian filter: ";
+            std::cin >> sigmaGaussian;
+
+            int lowThreshold;
+            std::cout << "Enter low threshold value: ";
+            std::cin >> lowThreshold;
+
+            int highThreshold;
+            std::cout << "Enter high threshold value: ";
+            std::cin >> highThreshold;
+
+            int paddingChoiceInt;
+            std::cout << "Select padding:\n0. None\n1. Zero\n2. Replicate\n3. Reflect\nChoice: ";
+            std::cin >> paddingChoiceInt;
+
+            PaddingChoice padC = static_cast<PaddingChoice>(paddingChoiceInt);      // casting the int padding choice into PaddingChoice type
+
+            std::vector<uint8_t> edgeBuffer = applyCannyEdgeDetection(result, lowThreshold, highThreshold, sigmaGaussian, kernelSizeGaussian, padC);
+
+            // Update the result buffer
+            if (!edgeBuffer.empty()) {
+                result.buffer = edgeBuffer;
+            }
+            
         }
-
-        int paddingChoiceInt;
-        std::cout << "Select padding:\n0. None\n1. Zero\n2. Replicate\n3. Reflect\nChoice: ";
-        std::cin >> paddingChoiceInt;
-
-        PaddingChoice padC = static_cast<PaddingChoice>(paddingChoiceInt);      // casting the int padding choice into PaddingChoice type
-
-        // 3. Apply edge detection
-        std::vector<uint8_t> edgeBuffer = applyGradientEdgeDetection(
-            result,                  // input image
-            kernelC,                // kernel choice
-            thresholdYesNo,         // apply threshold?
-            thresholdVal,           // threshold value
-            padC                    // padding choice
-        );
-
-        // Update the result buffer
-        if (!edgeBuffer.empty()) {
-            result.buffer = edgeBuffer;
-        }
-
-
         break;
     }
     default:

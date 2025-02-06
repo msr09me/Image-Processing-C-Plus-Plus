@@ -24,6 +24,15 @@ std::vector<uint8_t> applyGradientEdgeDetection(
     PaddingChoice paddingChoice
 );
 
+std::vector<uint8_t> applyCannyEdgeDetection(
+    const ImageReadResult& inputImage,
+    double lowThreshold,
+    double highThreshold,
+    double sigma,
+    int kernelSize,
+    PaddingChoice paddingChoice
+);
+
 
 
 #endif
